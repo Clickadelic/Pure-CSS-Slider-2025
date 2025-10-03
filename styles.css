@@ -1,0 +1,113 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: rgb(6, 102, 167); /* Tailwind: blue-700 */
+
+  /* Slate */
+  --slate-50: rgb(248, 250, 252);
+  --slate-100: rgb(241, 245, 249);
+  --slate-200: rgb(226, 232, 240);
+  --slate-300: rgb(203, 213, 225);
+  --slate-400: rgb(148, 163, 184);
+  --slate-500: rgb(100, 116, 139);
+  --slate-600: rgb(71, 85, 105);
+  --slate-700: rgb(51, 65, 85);
+  --slate-800: rgb(30, 41, 59);
+  --slate-900: rgb(15, 23, 42);
+}
+
+body {
+  padding: 2em;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--slate-900);
+}
+
+.carousel {
+  width: 100%;
+  overflow-x: auto;
+  margin: 3em auto;
+  display: flex;
+  gap: 2em;
+  scroll-behavior: smooth;
+  anchor-name: --carousel;
+  scroll-snap-type: x mandatory;
+  scroll-marker-group: after;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel::scroll-marker-group {
+  display: flex;
+  justify-content: center;
+  gap: 0.5em;
+}
+
+.card::scroll-marker {
+  content: " ";
+  height: 1em;
+  width: 1em;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+}
+
+.card::scroll-marker:target-current {
+  background-color: var(--slate-100);
+}
+
+.carousel::scroll-button(left),
+.carousel::scroll-button(right) {
+  content: "←";
+  border: none;
+  background-color: var(--primary-color);
+  font-family: Consolas;
+  font-size: 3rem;
+  color: white;
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  padding-bottom: 0.1em;
+  cursor: pointer;
+  position: fixed;
+  position-anchor: --carousel;
+  position-area: left center;
+  translate: 50%;
+}
+
+.carousel::scroll-button(right) {
+  content: "→";
+  position-anchor: --carousel;
+  position-area: right center;
+  translate: -50%;
+}
+
+/* End of Cards / Disabled */
+.carousel::scroll-button(left):disabled,
+.carousel::scroll-button(right):disabled {
+  opacity: 0.5;
+  cursor: auto;
+}
+
+.card {
+  flex: 0 0 20em;
+  /* height: 12em; oder */
+  aspect-ratio: 5 / 3;
+  background-color: var(--primary-color);
+  padding: 1em;
+  border-radius: 0.5em;
+  text-align: center;
+  color: white;
+  align-content: center;
+  scroll-snap-align: start;
+}
+
+@media (max-width: 500px) {
+  .card {
+    flex: 0 0 100%;
+  }
+}
