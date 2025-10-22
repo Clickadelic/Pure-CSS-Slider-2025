@@ -4,7 +4,8 @@ This is a pure CSS-Slider with 2025 features like Scroll-Snap-Type, Scroll-Marke
 
 ## usage
 
-All you need is a wrapper div.carousel with some items in it - that's it.
+All you need is a wrapper div.carousel with some items with item.card in it - that's it.
+Preferarbly .card items should be a div or a list-item.
 
 ## screenshot
 
